@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: rgb(38, 35, 35);
+  text-align: center;
+  color: plum;
+  font-family: Georgia, 'Times New Roman';
+  
+  /* NEW: This strictly hides web browser scrollbars so the page physically cannot scroll */
+  overflow: hidden; 
+}
+
+canvas {
+  display: block;
+  margin: auto;
+  
+  /* ---------- ROUNDED ARCADE LOOK ---------- */
+  border-radius: 40px; 
+  overflow: hidden;    
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4); 
+  
+  /* ---------- FIT TO SCREEN ---------- */
+  max-height: 95vh; /* Never gets taller than 95% of your screen height */
+  max-width: 95vw;  /* Never gets wider than 95% of your screen width */
+  width: auto;      /* Keeps Birdy's proportions from stretching or squishing */
+}
