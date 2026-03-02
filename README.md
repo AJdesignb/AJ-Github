@@ -4,8 +4,8 @@ Welcome to my collection of coding experiments, projects, and technical explorat
 
 Each project here represents a learning opportunity, a technical challenge, or simply an idea I wanted to bring to life. Feel free to explore, learn from, or build upon anything you find useful.
 
-### 1. [THE BIRDY GAME](https://ajdesignb.github.io/MM621_F25/project_1_Birdy/index.html)
-**[Link to my Code](https://github.com/AJdesignb/MM621_F25/tree/main/project_1_Birdy)**
+### 1. [THE BIRDY GAME](https://ajdesignb.github.io/AJ-Github/TheBirdyProject/index.html)
+**[Link to my Code](https://github.com/AJdesignb/MM621_F25/tree/main/TheBirdyProject)**
 
 ## About the Game
 An exploration of randomness through interactive gameplay—my own somewhat broken version of Flappy Bird.
@@ -16,7 +16,7 @@ The experience features randomized pipe heights, spacing, and timing that create
 
 **Note:** This is one of my early explorations in interactive design and game development. As I'm still learning, this version intentionally retains its quirks and "broken" elements as part of the creative process.
 
-### 2. [CHARACTER RANDOMISER](https://ajdesignb.github.io/MM621_F25/Assignments/attempt%202/index.html)
+### 2. [CHARACTER RANDOMISER](https://ajdesignb.github.io/AJ-Github/Assignments/attempt%202/index.html)
 **[Link to my code](https://github.com/AJdesignb/MM621_F25/tree/main/Assignments/attempt%202)**
 
 ## About the Project
