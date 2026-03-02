@@ -27,7 +27,7 @@ This project explores the creative potential of randomness in visual design, uti
 
 Built as an exercise in combining graphics with interactive functionality, the randomizer showcases how simple user input can unlock endless variations, transforming a static character into a living, evolving creation with each interaction.
 
-### 3. [Mini Data Viz](https://ajdesignb.github.io/MM621_F25/Mini_DataViz_Assingment/index.html) using Pantry Data & CSV Files
+### 3. [Mini Data Viz](https://ajdesignb.github.io/AJ-Github/Mini_DataViz_Assingment/index.html) using Pantry Data & CSV Files
 **[Link to my code](https://github.com/AJdesignb/MM621_F25/tree/main/Mini_DataViz_Assingment)**
 
 A hands-on dive into data visualization using real-world pantry food items and their nutritional information.
