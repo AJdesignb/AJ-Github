@@ -13,7 +13,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 :focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
 h1,h2,h3,p{margin:0}
 #shell{position:fixed;inset:0;display:flex;justify-content:center;background:#E2A3AE}
-#app{position:relative;width:100%;max-width:440px;height:100%;background:var(--bg);overflow:hidden}
+#app{position:relative;width:100%;max-width:440px;height:100%;background:linear-gradient(rgba(243,230,204,.5),rgba(243,230,204,.5)),url(assets/linen.jpg) center/cover no-repeat,var(--bg);overflow:hidden}
 .frame{position:absolute;pointer-events:none;z-index:50;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 .f1{inset:0;padding:8px;background-color:#E2A3AE;background-image:radial-gradient(#7A1F2B 1.3px,transparent 1.8px),radial-gradient(#FBF3E2 1.1px,transparent 1.6px);background-size:9px 9px;background-position:0 0,4.5px 4.5px}
 .f2{inset:10px;padding:6px;border-radius:10px;background-color:#6B1424;background-image:radial-gradient(#F3E6CC 1.1px,transparent 1.6px),radial-gradient(#9AA6DE 1px,transparent 1.5px);background-size:8px 8px;background-position:0 0,4px 4px}
