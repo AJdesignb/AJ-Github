@@ -155,7 +155,7 @@ function turnView(){
   const crafts=p.crafts.map((k,i)=>craftCard(k,p.hand,rv.craft&&i===p.crafts.length-1)).join('')+(p.crafts.length<3?`<div class="emptycraft">Drag a craft card here to take on another craft</div>`:'');
   const g=countBy(p.hand),hand=Object.keys(MATS).filter(m=>g[m]).map(m=>resCard(m,g[m],rv.m===m?'new':'')).join('')||'<span class="muted" style="font-size:14px;align-self:center">No resources yet. Drag the resource deck here.</span>';
   const nothing=!S.deck.length&&!S.disc.A.length&&!S.disc.B.length&&!canCraft;
-  return `<div class="toran"><img src="assets/toran-small.svg" alt=""></div><div class="turn">
+  return `<div class="toran"><img src="assets/toran-small.svg" alt=""></div><div class="turn"><div class="turnbody">
    <div class="top">${avatar(p,34)}<div style="flex:1;line-height:1.1"><div style="font:400 21px var(--display)">${esc(p.name)}’s turn</div><div class="muted" style="font-size:13px">Round ${round}${S.lastRound?' · final round':''} · make one move</div></div>
      ${soundBtn()}<button class="iconbtn" data-a="rules" aria-label="How to play"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/></svg></button>
      <button class="iconbtn" data-a="askNew" aria-label="New game"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button></div>
@@ -164,6 +164,7 @@ function turnView(){
    ${S.done?`<p class="hint" id="hint"></p>`:`<p class="hint" id="hint">${S.news&&S.news.length?esc('While you were away: '+S.news.join(' · ')+'.'):nothing?'Nothing left to take.':'Drag a card from the table, or tap it'}</p>`}
    ${nothing&&!S.done?'<button class="btn ghost" data-a="pass">Pass this turn</button>':''}
    <section class="crafts" data-drop="crafts" aria-label="Your crafts"><div class="top"><span class="eyebrow">Your crafts · ${p.crafts.length} of 3</span>${p.crafts.length>1?'<span class="muted" style="font-size:12px">swipe ›</span>':''}</div><div class="crow">${crafts}</div></section>
+   </div>
    <section class="tray" data-drop="hand" aria-label="Your hand">
      <div class="top"><span class="eyebrow">Your hand · ${p.hand.length}</span><span style="display:flex;gap:10px;align-items:center;font-weight:600;font-size:14px">${p.gi?`<span class="coin gi">${p.gi}</span>GI`:''}<span class="coin">${p.coins}</span>coins</span></div>
      <div class="hand">${hand}</div>
