@@ -116,10 +116,10 @@ function endGame(){
 function craftCard(k,hand,isNew){
   const c=CRAFTS[k],have=countBy(hand);
   const pills=Object.keys(c.need).map(m=>{const h=Math.min(have[m]||0,c.need[m]);return `<span class="pill${h>=c.need[m]?' ok':''}" style="--c:${MATS[m].c}"><i></i>${MATS[m].n} ${h}/${c.need[m]}</span>`;}).join('');
-  const mot=[0,1,2,3,4].map(i=>LOTUS(i%2?c.panel:'#1F1B18')).join('');
-  return `<article class="cc${isNew?' new':''}" style="--panel:${c.panel}" aria-label="${c.name} craft card"><div class="in"><div class="mot">${mot}</div><h3>${c.name}</h3><p>${c.region.split(',')[0]} · ${c.coins} coins</p><div class="img">Illustration<div class="pills">${pills}</div></div></div></article>`;
+  const size=c.name.length>15?'s':c.name.length>12?'m':'';
+  return `<article class="cc${isNew?' new':''}" style="--panel:${c.panel}" aria-label="${c.name} craft card"><div class="in"><div class="mot" style="background-image:url(assets/crafts/${k}-motif.png)"></div><h3 class="${size}">${c.name}</h3><p>${c.region} · ${c.coins} coins</p><div class="img" style="background-image:url(assets/crafts/${k}.jpg)"><div class="pills">${pills}</div></div></div></article>`;
 }
-const resCard=(m,n,extra='')=>`<div class="rc ${extra}" style="--c:${MATS[m].c}"><i></i><span>${MATS[m].n}</span>${n>1?`<em>×${n}</em>`:''}</div>`;
+const resCard=(m,n,extra='')=>`<div class="rc ${extra}" style="--c:${MATS[m].c}"><i style="background-image:url(assets/resources/${m}.jpg)"></i><span>${MATS[m].n}<small>Resource</small></span>${n>1?`<em>×${n}</em>`:''}</div>`;
 const soundBtn=()=>`<button class="iconbtn" data-a="sound" aria-label="${Sound.on?'Turn sound off':'Turn sound on'}" aria-pressed="${Sound.on}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/>${Sound.on?'<path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>':'<path d="M17 9l5 6M22 9l-5 6"/>'}</svg></button>`;
 const avatar=(p,s)=>`<span class="avatar" style="width:${s}px;height:${s}px;background:${p.color};font-size:${Math.round(s*.38)}px">${esc(ini(p.name))}</span>`;
 
@@ -128,7 +128,7 @@ function setupView(){
   const seg=[2,3,4].map(n=>`<button type="button" data-a="count" data-n="${n}" aria-pressed="${S.count===n}">${n}</button>`).join('');
   return `<div class="toran"><img src="assets/toran-large.svg" alt=""></div><div class="setup">
   <div class="top"><span class="eyebrow">A game about the crafts of India</span><span style="display:flex;gap:6px">${soundBtn()}<button class="iconbtn" data-a="rules" aria-label="How to play" style="border-radius:50%;font:600 18px var(--card)">?</button></span></div>
-  <div><h1 class="logo">kārigaṛ</h1><p class="muted" style="font-size:17px;margin-top:4px">Collect the materials. Finish the craft. Don’t let it fade.</p></div>
+  <div><h1 class="logo">kārigaṛ</h1><p class="muted" style="font-size:17px;margin-top:4px">Collect the materials. Finish the craft.<br>Don’t let it fade.</p></div>
   <section class="panel" aria-label="Players"><div class="top"><span class="eyebrow">Who’s playing?</span><div class="seg" role="group" aria-label="Number of players">${seg}</div></div>${inputs}</section>
   <div style="margin-top:auto;display:flex;flex-direction:column;gap:6px;align-items:center"><button class="btn wide" data-a="start">Start the game</button><span class="muted" style="font-size:13px">One phone · pass it around · 2–4 players</span></div></div>`;
 }
@@ -206,7 +206,7 @@ function modalView(){
   } else if(m.type==='reveal'){
     const c=CRAFTS[m.craft];
     const tabs=INFO.map((x,i)=>`<button type="button" class="tab" role="tab" data-a="tab" data-i="${i}" aria-selected="${m.tab===i}">${x}</button>`).join('');
-    b=`<span class="eyebrow">Craft complete</span><div class="medal"><div>Illustration: the artisan or craft emblem</div></div><h2 style="font-size:36px">${c.name}</h2><p class="muted">${esc(cur().name)} is now a kārigar of ${c.region}</p><span style="display:flex;align-items:center;gap:8px;padding:4px 14px 4px 4px;border-radius:999px;background:#fff;font-weight:700"><span class="coin" style="background:var(--mustard);color:var(--dark)">+${c.coins}</span>coins</span>
+    b=`<span class="eyebrow">Craft complete</span><div class="medal"><div style="background-image:url(assets/crafts/${m.craft}.jpg)" role="img" aria-label="${c.name}"></div></div><h2 style="font-size:36px">${c.name}</h2><p class="muted">${esc(cur().name)} is now a kārigar of ${c.region}</p><span style="display:flex;align-items:center;gap:8px;padding:4px 14px 4px 4px;border-radius:999px;background:#fff;font-weight:700"><span class="coin" style="background:var(--mustard);color:var(--dark)">+${c.coins}</span>coins</span>
      <div class="info"><div class="tabs" role="tablist">${tabs}</div><p style="font-size:15px">Research for “${INFO[m.tab].toLowerCase()}” goes here once it’s verified.</p></div><button class="btn wide" data-a="revealOk">Continue</button>`;
   }
   return `<div class="scrim"${m.type==='keep'?' style="background:rgba(74,16,28,.3)"':''}><div class="sheet" role="dialog" aria-modal="true"><span class="grab"></span>${b}</div></div>`;
@@ -289,5 +289,7 @@ view.addEventListener('click',e=>{
 });
 view.addEventListener('input',e=>{if(e.target.dataset.name!=null)S.names[+e.target.dataset.name]=e.target.value;});
 render();
-
+/* scale the phone frame to fit laptop/desktop screens (no effect on phones) */
+const fitFrame=()=>{const s=Math.min(1,(innerHeight-40)/868,(innerWidth-40)/414);document.documentElement.style.setProperty('--fit',s.toFixed(3));};
+fitFrame();addEventListener('resize',fitFrame);
 }
